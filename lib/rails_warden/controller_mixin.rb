@@ -45,12 +45,6 @@ module RailsWarden
       # Proxy to the authenticate method on warden
       # :api: public
       def authenticate!(*args)
-        defaults = {:action => RailsWarden.unauthenticated_action}
-        if args.last.is_a? Hash
-          args[-1] = defaults.merge(args.last)
-        else
-          args << defaults
-        end
         warden.authenticate!(*args)
       end
 
